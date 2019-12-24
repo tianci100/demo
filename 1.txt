@@ -1,0 +1,16 @@
+platform_limit      平台名称和icon
+platform_name       平台名称
+platform_icon       icon
+
+amount               入口页面可借金额
+bottom_statement    底部声明
+front_page          是否前置
+page_address        前置页URL
+page_uv             前置页UV
+is_organization     合作机构是否展示
+
+entry_list
+[{
+
+ },{},{}
+]

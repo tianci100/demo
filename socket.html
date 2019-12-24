@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>socket</title>
+</head>
+<body>
+
+
+	<div id="test">
+		<a href="javascript:sends()">websocket测试</a>
+
+	</div>
+	<script type="text/javascript">
+        var ws = null;
+
+        function connect() {
+            // 创建一个 websocket 连接
+            ws = new WebSocket("ws://127.0.0.1:9501");
+            // websocket 创建成功事件
+            ws.onopen = onopen;
+            // websocket 接收到消息事件
+            ws.onmessage = onmessage;
+            ws.onclose = onclose;
+            ws.onerror = onerror;
+        }
+        connect();
+        function onopen()
+        {if (ws.readyState==1){
+            //握手成功后对服务器发送信息
+            var data = "系统消息：建立连接成功";
+            console.log(data);
+            ws.send('你好');
+        }
+
+
+        }
+
+        function onmessage(e)
+        {
+            // var data = JSON.parse(e.data);
+            console.log(e.data)
+            console.log('数据返回')
+        }
+        function onclose(e)
+        {
+            console.log("连接关闭，定时重连");
+            // connect();
+        }
+
+        // websocket 错误事件
+        function onerror(e)
+        {
+            console.log(e)
+            console.log("系统消息 : 出错了,请退出重试.");
+        }
+
+        function sends() {
+            ws.send('你好')
+            console.log('发送消息')
+        }
+	</script>
+</body>
+</html>
